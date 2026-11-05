@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiche bien fictive · AJP Immo</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' fill='none'%3E%3Cpath fill='%23014EFB' d='M7.48 20.395v15.538c0 .548.444.992.991.992h7.597a.992.992 0 0 0 .992-.992v-8.56c0-.548.444-.992.992-.992h1.997c.548 0 .992.444.992.991v8.561c0 .548.444.992.991.992h7.777a.992.992 0 0 0 .992-.992V20.41c0-.446-.229-.862-.606-1.102L19.618 12.6a1.305 1.305 0 0 0-1.418.013L8.065 19.306c-.365.242-.586.65-.586 1.089Z'/%3E%3C/svg%3E" type="image/svg+xml">
+  <style>
+    :root {
+      --ink: #17233a;
+      --muted: #5c6b82;
+      --line: #d9e0ea;
+      --paper: #f4f6f9;
+      --card: #fff;
+      --ph: #014efb;
+      --ph-dark: #0139b8;
+      --ok: #0d7a4f;
+      --warn: #8a5a00;
+      --bad: #a12626;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 28px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    header strong { font-size: 15px; }
+    .badge {
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 10px;
+    }
+    main { max-width: 1080px; margin: 0 auto; padding: 24px 20px 48px; }
+    h1 { font-size: 22px; margin: 0 0 6px; }
+    .lead { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+    .sheet {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 18px;
+    }
+    label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+    input, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 10px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+    }
+    .span-2 { grid-column: span 2; }
+    .actions { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+    button {
+      appearance: none;
+      border: 0;
+      background: var(--ph);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 11px 16px;
+      cursor: pointer;
+    }
+    button:hover { background: var(--ph-dark); }
+    button:disabled { opacity: 0.6; cursor: wait; }
+    .status { font-size: 14px; color: var(--muted); }
+    .status.ok { color: var(--ok); }
+    .status.warn { color: var(--warn); }
+    .status.bad { color: var(--bad); }
+    .frame-wrap {
+      display: none;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .frame-wrap.open { display: block; }
+    .frame-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+    .frame-bar span { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    iframe { width: 100%; height: 640px; border: 0; background: #f7f8fb; }
+    details { margin-top: 16px; font-size: 13px; color: var(--muted); }
+    details input { margin-top: 8px; }
+    pre {
+      margin: 8px 0 0;
+      padding: 10px;
+      background: #f7f8fb;
+      border-radius: 8px;
+      overflow: auto;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px;
+      color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+      .span-2 { grid-column: auto; }
+      header, main { padding-left: 14px; padding-right: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><path fill="#014EFB" d="M7.48 20.395v15.538c0 .548.444.992.991.992h7.597a.992.992 0 0 0 .992-.992v-8.56c0-.548.444-.992.992-.992h1.997c.548 0 .992.444.992.991v8.561c0 .548.444.992.991.992h7.777a.992.992 0 0 0 .992-.992V20.41c0-.446-.229-.862-.606-1.102L19.618 12.6a1.305 1.305 0 0 0-1.418.013L8.065 19.306c-.365.242-.586.65-.586 1.089Z"/></svg>
+    <strong>Fiche bien</strong>
+    <span class="badge">Prototype AJP · données fictives</span>
+  </header>
+  <main>
+    <h1>12 rue des Olivettes</h1>
+    <p class="lead">Fiche fictive, à la place d'Immofacile. Le bouton envoie le bien au webhook. L'iframe s'ouvre avec l'URL renvoyée.</p>
+    <form class="sheet" id="fiche">
+      <div class="grid">
+        <div>
+          <label for="sourceDossierId">Identifiant du bien</label>
+          <input id="sourceDossierId" value="AJP-DEMO-44000-01">
+        </div>
+        <div>
+          <label for="pdfTemplate">Template PDF</label>
+          <select id="pdfTemplate">
+            <option value="location">Location</option>
+            <option value="vente" selected>Vente</option>
+            <option value="vente_prestige">Vente prestige</option>
+          </select>
+        </div>
+        <div>
+          <label for="houseNumber">Numéro</label>
+          <input id="houseNumber" value="12">
+        </div>
+        <div>
+          <label for="street">Rue</label>
+          <input id="street" value="rue des Olivettes">
+        </div>
+        <div>
+          <label for="postCode">Code postal</label>
+          <input id="postCode" value="44000">
+        </div>
+        <div>
+          <label for="city">Ville</label>
+          <input id="city" value="Nantes">
+        </div>
+        <div>
+          <label for="propertyType">Type de bien</label>
+          <select id="propertyType">
+            <option value="apartment" selected>Appartement</option>
+            <option value="house">Maison</option>
+          </select>
+        </div>
+        <div>
+          <label for="livingArea">Surface (m²)</label>
+          <input id="livingArea" type="number" min="1" value="68">
+        </div>
+        <div>
+          <label for="numberOfRooms">Pièces</label>
+          <input id="numberOfRooms" type="number" min="1" value="3">
+        </div>
+        <div>
+          <label for="agentName">Négociateur</label>
+          <input id="agentName" value="Camille Martin">
+        </div>
+        <div>
+          <label for="agentEmail">Email négociateur</label>
+          <input id="agentEmail" type="email" value="camille.martin@example.com">
+        </div>
+        <div>
+          <label for="agencyName">Agence</label>
+          <input id="agencyName" value="AJP Immobilier Example">
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit" id="generate">Générer une estimation PriceHubble</button>
+        <p class="status" id="status" role="status"></p>
+      </div>
+      <div class="frame-wrap" id="frameWrap">
+        <div class="frame-bar">
+          <strong>Estimation PriceHubble</strong>
+          <span id="frameUrl"></span>
+        </div>
+        <iframe id="frame" title="Estimation PriceHubble"></iframe>
+      </div>
+      <details>
+        <summary>Webhook et dernière réponse</summary>
+        <label for="webhookUrl">URL du webhook n8n</label>
+        <input id="webhookUrl" value="https://pricehubble.app.n8n.cloud/webhook/ajp-immo-immofacile-inbound">
+        <pre id="debug">En attente du clic.</pre>
+      </details>
+    </form>
+  </main>
+  <script>
+    var STORAGE_KEY = "slf-2032-v1";
+    var form = document.getElementById("fiche");
+    var statusEl = document.getElementById("status");
+    var generateBtn = document.getElementById("generate");
+    var frameWrap = document.getElementById("frameWrap");
+    var frame = document.getElementById("frame");
+    var frameUrlEl = document.getElementById("frameUrl");
+    var debugEl = document.getElementById("debug");
+    var fields = [
+      "sourceDossierId", "pdfTemplate", "houseNumber", "street", "postCode", "city",
+      "propertyType", "livingArea", "numberOfRooms", "agentName", "agentEmail",
+      "agencyName", "webhookUrl"
+    ];
+
+    function val(id) { return document.getElementById(id).value.trim(); }
+
+    function loadStored() {
+      try {
+        var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        fields.forEach(function (id) {
+          if (typeof saved[id] === "string") document.getElementById(id).value = saved[id];
+        });
+      } catch (err) {}
+    }
+
+    function saveStored() {
+      var data = {};
+      fields.forEach(function (id) { data[id] = document.getElementById(id).value; });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function setStatus(text, kind) {
+      statusEl.textContent = text;
+      statusEl.className = "status" + (kind ? " " + kind : "");
+    }
+
+    function buildPayload() {
+      var pdfTemplate = val("pdfTemplate");
+      return {
+        sourceDossierId: val("sourceDossierId"),
+        countryCode: "FR",
+        dealType: pdfTemplate === "location" ? "rent" : "sale",
+        pdfTemplate: pdfTemplate,
+        property: {
+          propertyType: val("propertyType"),
+          livingArea: Number(val("livingArea")),
+          numberOfRooms: Number(val("numberOfRooms")),
+          address: {
+            houseNumber: val("houseNumber"),
+            street: val("street"),
+            postCode: val("postCode"),
+            city: val("city")
+          }
+        },
+        agent: { name: val("agentName"), email: val("agentEmail") },
+        agency: { name: val("agencyName") }
+      };
+    }
+
+    function pickIframeUrl(body) {
+      if (!body || typeof body !== "object") return "";
+      var url = body.iframeUrl || body.iframe_url || "";
+      if (typeof url !== "string") return "";
+      if (url.indexOf("https://") !== 0 && url.indexOf("http://") !== 0) return "";
+      return url;
+    }
+
+    async function fireWebhook(url, payload) {
+      var jsonBody = JSON.stringify(payload);
+      try {
+        var resp = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: jsonBody
+        });
+        var body = null;
+        try { body = await resp.json(); } catch (err) {}
+        return { status: resp.status, body: body, ok: resp.ok, mode: "cors" };
+      } catch (corsErr) {
+        try {
+          var plain = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: jsonBody
+          });
+          var plainBody = null;
+          try { plainBody = await plain.json(); } catch (err) {}
+          return { status: plain.status, body: plainBody, ok: plain.ok, mode: "text-plain" };
+        } catch (corsErr2) {
+          return { status: 0, body: null, ok: false, mode: "opaque" };
+        }
+      }
+    }
+
+    function showIframe(url) {
+      frame.src = url;
+      frameUrlEl.textContent = url;
+      frameWrap.classList.add("open");
+    }
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      saveStored();
+      var webhook = val("webhookUrl");
+      var payload = buildPayload();
+      if (!webhook) {
+        setStatus("Indique l'URL du webhook.", "bad");
+        return;
+      }
+      generateBtn.disabled = true;
+      frameWrap.classList.remove("open");
+      frame.src = "about:blank";
+      setStatus("Envoi du bien…");
+      debugEl.textContent = JSON.stringify(payload, null, 2);
+      var result = await fireWebhook(webhook, payload);
+      var iframeUrl = pickIframeUrl(result.body);
+      debugEl.textContent = JSON.stringify({
+        mode: result.mode,
+        status: result.status,
+        body: result.body,
+        sent: payload
+      }, null, 2);
+      if (iframeUrl) {
+        showIframe(iframeUrl);
+        setStatus("Estimation ouverte.", "ok");
+      } else if (result.mode === "opaque") {
+        setStatus("Réponse illisible. Autorise CORS sur le webhook pour renvoyer iframeUrl.", "warn");
+      } else if (result.ok) {
+        setStatus("Le webhook a répondu, sans URL d'iframe.", "warn");
+      } else {
+        setStatus("Le webhook n'a pas répondu (" + result.status + ").", "bad");
+      }
+      generateBtn.disabled = false;
+    });
+
+    loadStored();
+  </script>
+</body>
+</html>
