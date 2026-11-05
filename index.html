@@ -173,8 +173,16 @@
           <input id="livingArea" type="number" min="1" value="68">
         </div>
         <div>
+          <label for="landArea">Surface du terrain (m²)</label>
+          <input id="landArea" type="number" min="0" value="150">
+        </div>
+        <div>
           <label for="numberOfRooms">Pièces</label>
           <input id="numberOfRooms" type="number" min="1" value="3">
+        </div>
+        <div>
+          <label for="buildingYear">Année de construction</label>
+          <input id="buildingYear" type="number" min="1000" max="2100" value="1930">
         </div>
         <div>
           <label for="agentName">Négociateur</label>
@@ -209,7 +217,7 @@
     </form>
   </main>
   <script>
-    var STORAGE_KEY = "slf-2032-v1";
+    var STORAGE_KEY = "slf-2032-v2";
     var form = document.getElementById("fiche");
     var statusEl = document.getElementById("status");
     var generateBtn = document.getElementById("generate");
@@ -219,7 +227,7 @@
     var debugEl = document.getElementById("debug");
     var fields = [
       "sourceDossierId", "pdfTemplate", "houseNumber", "street", "postCode", "city",
-      "propertyType", "livingArea", "numberOfRooms", "agentName", "agentEmail",
+      "propertyType", "livingArea", "landArea", "numberOfRooms", "buildingYear", "agentName", "agentEmail",
       "agencyName", "webhookUrl"
     ];
 
@@ -255,7 +263,9 @@
         property: {
           propertyType: val("propertyType"),
           livingArea: Number(val("livingArea")),
+          landArea: Number(val("landArea")),
           numberOfRooms: Number(val("numberOfRooms")),
+          buildingYear: Number(val("buildingYear")),
           address: {
             houseNumber: val("houseNumber"),
             street: val("street"),
